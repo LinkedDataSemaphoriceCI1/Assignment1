@@ -8,7 +8,7 @@
 
 errors=0
 sleep 2
-username=$(curl -s -H "Authorization: token ${TOKEN}" -X GET "https://api.github.com/repos/${SEMAPHORE_REPO_SLUG}/pulls/${PULL_REQUEST_NUMBER}" | jq -r '.user.login')
+username=$(curl -H "Authorization: token ${TOKEN}" -X GET "https://api.github.com/repos/${SEMAPHORE_REPO_SLUG}/pulls/${PULL_REQUEST_NUMBER}" | jq -r '.user.login')
 
 if [ ! -f "$username.csv" ]; then
   echo "File missing. Make sure it has the correct format" "$username.csv"
